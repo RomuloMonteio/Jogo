@@ -12,7 +12,7 @@ import javax.swing.JPanel;
  *
  * @author romy
  */
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel implements Runnable {
     //Screen settings
     
     final int originalTileSize = 16;
@@ -25,11 +25,23 @@ public class GamePanel extends JPanel {
     final int screeWith = tileSize * maxScreenCol;
     final int screenHeigth = tileSize * maxScreenRow;
     
+    Thread gameThread;
+    
     public GamePanel()
     {
         this.setPreferredSize(new Dimension(screeWith,screenHeigth));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
+        
+    }
+    public void stardGameThread()
+    {
+         gameThread = new Thread(this);
+         gameThread.start();
+    }
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         
     }
 }
